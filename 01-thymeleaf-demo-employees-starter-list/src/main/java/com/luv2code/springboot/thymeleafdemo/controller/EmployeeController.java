@@ -16,19 +16,28 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-private EmployeeService employeeService;
-@Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     @GetMapping("/list")
     public String listEmployees(Model theModel) {
-List<Employee>theEmployees = employeeService.findAll();
+        List<Employee> theEmployees = employeeService.findAll();
 
         theModel.addAttribute("employees", theEmployees);
 
-        return "list-employees";
+        return "employees/list-employees";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model) {
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+
+        return "employees/employee-form";
     }
 }
 
