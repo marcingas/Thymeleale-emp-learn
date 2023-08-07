@@ -1,13 +1,12 @@
 package com.luv2code.springboot.thymeleafdemo.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.luv2code.springboot.thymeleafdemo.dao.EmployeeRepository;
+import com.luv2code.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.luv2code.springboot.thymeleafdemo.dao.EmployeeRepository;
-import com.luv2code.springboot.thymeleafdemo.entity.Employee;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -21,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findAll() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAllByOrderByLastNameAsc();
     }
 
     @Override
