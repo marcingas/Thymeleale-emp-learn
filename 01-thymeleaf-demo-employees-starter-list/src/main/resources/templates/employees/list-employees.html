@@ -1,13 +1,15 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 	<title>Employee Directory</title>
 
@@ -18,13 +20,28 @@
 <div class="container">
 
 	<h3>Employee Directory</h3>
+
 	<hr>
 	<p>
+		User: <span sec:authentication="principal.username"></span>
+		<br><br>
+		Role(s): <span sec:authentication="principal.authorities"></span>
+
+	</p>
+
+	<hr>
+
+	<p>
+
 	<form action="#" th:action="@{/logout}" method="POST">
 
 		<input type="submit" value="Logout"/>
 	</form>
+
 	</p>
+
+	<br><br>
+
 	<a th:href="@{/employees/showFormForAdd}"
 	   class="btn btn-primary btn-sm mb-3">
 		Add Employee
