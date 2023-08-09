@@ -37,7 +37,10 @@ public class SecurityConfig {
                         .authenticated())
                 .formLogin(form -> form.loginPage("/showMyLoginPage")
                         .loginProcessingUrl("/authenticateTheUser")
-                        .permitAll());
+                        .permitAll()
+                )
+                .logout(logout -> logout.permitAll()
+                );
         return http.build();
     }
 }
