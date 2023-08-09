@@ -43,7 +43,9 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout.permitAll()
-                );
+                )
+                .exceptionHandling(configurer ->
+                        configurer.accessDeniedPage("/access-denied"));
         return http.build();
     }
 }
